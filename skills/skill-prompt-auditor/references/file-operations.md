@@ -4,10 +4,10 @@
 
 ## 准备、应用与回滚
 
-先在独立位置保存 UTF-8 候选稿。以下路径均为示意，使用真实路径并正确引用：
+先根据当前加载的 SKILL.md 所在目录确定 `<SKILL_DIR>` 的绝对路径；不要假设当前工作目录是 Skill 目录。先在独立位置保存 UTF-8 候选稿。以下路径均为示意，使用真实路径并正确引用：
 
 ```bash
-python3 scripts/file_guard.py stage '/项目/AGENTS.md' '/草稿/AGENTS.md' '/备份目录'
+python3 "<SKILL_DIR>/scripts/file_guard.py" stage '/项目/AGENTS.md' '/草稿/AGENTS.md' '/备份目录'
 ```
 
 脚本创建一个唯一的 `audit-...` 目录，包含完整 `original`、`candidate`、`manifest.json` 和 `changes.diff`。不会更改源文件或创建 git 提交。将快照目录放在不准备发布的本地位置；不要把用户原文混进公开 Skill 包。
@@ -15,8 +15,8 @@ python3 scripts/file_guard.py stage '/项目/AGENTS.md' '/草稿/AGENTS.md' '/�
 检查候选全文和 diff。在用户已经明确授权应用相应文件后，执行返回的 apply 命令。例如：
 
 ```bash
-python3 scripts/file_guard.py apply '/备份目录/audit-实际编号'
-python3 scripts/file_guard.py rollback '/备份目录/audit-实际编号'
+python3 "<SKILL_DIR>/scripts/file_guard.py" apply '/备份目录/audit-实际编号'
+python3 "<SKILL_DIR>/scripts/file_guard.py" rollback '/备份目录/audit-实际编号'
 ```
 
 `backup.sh` 是 stage 的 Bash 包装器，需要三个参数；`rollback.sh` 接受快照目录。应用使用 Python 命令，无需额外生成 apply.sh。重复应用／恢复到已处于的版本不会重写文件。

@@ -5,7 +5,7 @@ import tempfile
 import json
 import os
 
-script = Path(__file__).resolve().parents[1] / 'scripts/file_guard.py'
+script = Path(__file__).resolve().parents[1] / 'skills/skill-prompt-auditor/scripts/file_guard.py'
 results = []
 
 
