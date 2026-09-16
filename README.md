@@ -2,9 +2,18 @@
 
 审计和优化你的提示词、SKILL.md、AGENTS.md、CLAUDE.md 等规则文件。**安装后直接粘贴内容，得到问题说明、优化全文和修改理由。**
 
-## 复制一句话，发给你的 Agent
+## 复制这一句，发给 Codex 或 Claude Code
 
-以下内容发到 **Codex 或 Claude Code 的对话框**，不是终端命令。Agent 需要能访问 GitHub 并写入个人 Skill 目录；正常权限提示按宿主处理。
+```text
+请从 https://github.com/0lidaxiang/gpt6-prompt-master 获取并安装 skill-prompt-auditor（master 分支的 skills/skill-prompt-auditor 目录），按当前 Agent 的 Skill 安装方式保留完整附件；安装后加载它，让我直接粘贴要优化的提示词、SKILL.md 或 AGENTS.md。已有同名 Skill 时先检查差异，不覆盖我的改动。
+```
+
+**你不需要下载 ZIP、打开终端或手动复制文件。**把这句话发给 Agent，获取、安装和加载由它完成；随后直接粘贴要优化的内容即可。Agent 需要有联网及相应文件权限，权限提示按当前工具处理。
+
+这里的 Claude 指 **Claude Code**。这是一条自然语言请求，适用于能安装本地 Skill 的 Agent；单纯让网页聊天读取 GitHub 页面不等于安装 Skill。
+
+<details>
+<summary>需要明确指定工具时：Codex / Claude Code 专用指令与加载说明</summary>
 
 ### Codex
 
@@ -23,6 +32,8 @@
 上面明确使用 `master`，避免某些安装工具默认从不存在的 `main` 分支下载。Codex 若仍未发现新 Skill，重启后重试；Claude Code 若首次创建顶层 `~/.claude/skills` 目录，也可能需要重启。
 
 > 这里的 Claude 指 **Claude Code**。Claude 网页聊天、Cowork、云端任务的安装入口不同，不能照搬本机目录安装方式。
+
+</details>
 
 ## 安装后怎么用
 
