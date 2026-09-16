@@ -1,66 +1,68 @@
-# GPT6 Prompt Master · GPT6 提示词优化大师
+# GPT6 提示词优化大师
 
-审计和优化你的提示词、SKILL.md、AGENTS.md、CLAUDE.md 等规则文件。**安装后直接粘贴内容，得到问题说明、优化全文和修改理由。**
+GPT6 Prompt Master
 
-## 复制这一句，发给 Codex 或 Claude Code
+把提示词、SKILL.md 或 AGENTS.md 粘贴给 AI，检查重复、冲突和含糊的规则，获得保留原意的优化全文与修改理由。
 
-```text
-请从 https://github.com/0lidaxiang/gpt6-prompt-master 获取并安装 skill-prompt-auditor（master 分支的 skills/skill-prompt-auditor 目录），按当前 Agent 的 Skill 安装方式保留完整附件；安装后加载它，让我直接粘贴要优化的提示词、SKILL.md 或 AGENTS.md。已有同名 Skill 时先检查差异，不覆盖我的改动。
-```
+适用于 **Codex** 和 **Claude Code**。
 
-**你不需要下载 ZIP、打开终端或手动复制文件。**把这句话发给 Agent，获取、安装和加载由它完成；随后直接粘贴要优化的内容即可。Agent 需要有联网及相应文件权限，权限提示按当前工具处理。
+## 开始使用
 
-这里的 Claude 指 **Claude Code**。这是一条自然语言请求，适用于能安装本地 Skill 的 Agent；单纯让网页聊天读取 GitHub 页面不等于安装 Skill。
-
-<details>
-<summary>需要明确指定工具时：Codex / Claude Code 专用指令与加载说明</summary>
-
-### Codex
+**第一步：复制下面整段内容，发到 Agent 对话框。**
 
 ```text
-请使用 $skill-installer 安装 https://github.com/0lidaxiang/gpt6-prompt-master/tree/master/skills/skill-prompt-auditor ，安装后加载 skill-prompt-auditor；如果当前轮尚未发现它，请直接读取刚安装的 SKILL.md 按其规则工作，然后让我粘贴要优化的内容。
+请从这个 GitHub 仓库安装并加载 skill-prompt-auditor：
+https://github.com/0lidaxiang/gpt6-prompt-master
+
+使用 master 分支中的 skills/skill-prompt-auditor 目录，
+按当前 Agent 的安装方式保留完整附件。
+如果已经安装，先检查差异，不覆盖我的改动。
+
+完成后，让我粘贴要优化的内容。
 ```
 
-### Claude Code
+获取和安装由 Agent 完成，你不用手动下载或打开终端。
+
+**第二步：粘贴你想优化的内容。**
 
 ```text
-请从 https://github.com/0lidaxiang/gpt6-prompt-master 的 master 分支获取 skills/skill-prompt-auditor 完整目录，安装到 ~/.claude/skills/skill-prompt-auditor，保留附件和 LICENSE；若已有同名目录先检查差异，不覆盖我的改动。安装后加载该 Skill，然后让我粘贴要优化的内容。
+帮我优化下面这段指令，保留我明确要求的限制。
+请给出问题说明、优化全文和修改理由。
+
+［在这里粘贴原文］
 ```
 
-两条都是给 Agent 的安装请求。Codex 使用官方内置安装器；Claude Code 按官方支持的个人 Skill 目录安装。这不是两家共用的官方“一键安装命令”，也不需要运行本项目的备份脚本来安装。
+提示词、Skill 内容和 Agent 规则都可以直接粘贴，不需要提供文件路径。
 
-上面明确使用 `master`，避免某些安装工具默认从不存在的 `main` 分支下载。Codex 若仍未发现新 Skill，重启后重试；Claude Code 若首次创建顶层 `~/.claude/skills` 目录，也可能需要重启。
+## 你会得到什么
 
-> 这里的 Claude 指 **Claude Code**。Claude 网页聊天、Cowork、云端任务的安装入口不同，不能照搬本机目录安装方式。
+- **问题说明**：哪些地方重复、冲突或表达不清。
+- **优化全文**：可以直接复制使用的完整候选稿。
+- **修改理由**：为什么改、会影响什么、哪些地方还需要确认。
 
-</details>
+只要求审查时不会自动重写。处理本地文件时，默认先给候选稿，获得明确授权后才写回原文件。
 
-## 安装后怎么用
+## 手动指定这个 Skill
 
-直接粘贴已有内容，并说：
-
-```text
-帮我优化下面这段提示词，保留我明确要求的限制，给出问题说明、优化全文和修改理由：
-［粘贴原文］
-```
-
-Skill 可以根据任务描述自动匹配。想明确指定时，使用：
+安装后可以直接提出优化请求，让 Agent 匹配 Skill。需要明确指定时，复制对应内容：
 
 **Codex**
 
 ```text
-$skill-prompt-auditor 审计下面的内容，先给候选稿，不修改本地文件：［粘贴原文］
+$skill-prompt-auditor
+审计下面的内容，先给候选稿，不修改本地文件。
+
+［粘贴原文］
 ```
 
 **Claude Code**
 
 ```text
-/skill-prompt-auditor 审计下面的内容，先给候选稿，不修改本地文件：［粘贴原文］
+/skill-prompt-auditor
+审计下面的内容，先给候选稿，不修改本地文件。
+
+［粘贴原文］
 ```
-
-没有路径也能用；有路径则可以让具备文件读写能力的 Agent 处理指定文件。只要求审查时不会自动重写，要求优化时默认交付候选稿，写回原文件需要明确授权。
-
-自动匹配不代表每次都必然触发，也不代表安装后会自动扫描电脑。未提供待审材料时会等待你粘贴或指定文件。
 
 ## 它会检查什么
 
@@ -70,6 +72,15 @@ $skill-prompt-auditor 审计下面的内容，先给候选稿，不修改本地�
 - 每条建议保留、压缩、删除或改写的理由，以及缺少依据的待确认项。
 
 用户刻意设置的确认环节、踩坑后增加的有效约束、必要执行顺序会保留。优化不以越短越好为标准，也不以某代模型更强为理由机械删规则。
+
+## 安装遇到问题
+
+安装需要 Agent 能访问 GitHub，并具有对应目录的写入权限。遇到权限提示，按宿主提示处理。
+
+- **Codex**：可明确要求使用 `$skill-installer`，从本仓库 `master` 分支安装 `skills/skill-prompt-auditor`。安装后仍未发现时，重启 Codex 再试。
+- **Claude Code**：个人安装位置为 `~/.claude/skills/skill-prompt-auditor`。如果首次创建顶层 Skills 目录后没有识别到，重启 Claude Code 再试。
+
+这里的 Claude 指 Claude Code；Claude 网页聊天、Cowork 和云端任务使用不同的安装入口。
 
 ## 名称与目录
 
@@ -111,7 +122,10 @@ gpt6-prompt-master/
 Agent 应根据已安装 SKILL.md 的位置解析脚本绝对路径，不依赖当前项目的工作目录。从源码仓库手动测试时：
 
 ```bash
-python3 skills/skill-prompt-auditor/scripts/file_guard.py stage '/项目/AGENTS.md' '/候选稿/AGENTS.md' '/本地备份目录'
+python3 skills/skill-prompt-auditor/scripts/file_guard.py stage \
+  '/项目/AGENTS.md' \
+  '/候选稿/AGENTS.md' \
+  '/本地备份目录'
 ```
 
 返回结果包含快照位置及可执行的应用、回滚命令。源文件内容或权限发生变化、快照被改动时拒绝覆盖。
